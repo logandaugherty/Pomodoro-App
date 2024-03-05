@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://utu11xsk0vtq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0btn0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnuto"]
+bg_color = Color(0.411765, 0.411765, 0.411765, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx0pi"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.184314)
+
+[sub_resource type="Theme" id="Theme_qu2ae"]
+Button/styles/focus = SubResource("StyleBoxEmpty_0btn0")
+Button/styles/hover = SubResource("StyleBoxFlat_mnuto")
+Button/styles/normal = SubResource("StyleBoxFlat_mnuto")
+Button/styles/pressed = SubResource("StyleBoxFlat_yx0pi")
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_qu2ae")
+text = "Placeholder"

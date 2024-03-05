@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://uwr4x2o1nqcj"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_7m4sr"]
+[ext_resource type="Texture2D" uid="uid://bs1il0uxsokj4" path="res://skip-end.svg" id="1_nl73s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imqnv"]
+bg_color = Color(0.788235, 0.52549, 0.407843, 0.247059)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xbeme"]
+texture = ExtResource("1_nl73s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkn44"]
+bg_color = Color(0.254902, 0.388235, 0.141176, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhdar"]
+bg_color = Color(0.254902, 0.788235, 0.439216, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Main" type="Node"]
+script = ExtResource("1_7m4sr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BtnPomodoro" type="Button" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 204.0
+offset_right = 440.0
+offset_bottom = 270.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_imqnv")
+text = "Pomodoro"
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnLongBreak" type="Button" parent="CanvasLayer"]
+offset_left = 717.0
+offset_top = 198.0
+offset_right = 907.0
+offset_bottom = 264.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_imqnv")
+text = "Long Break
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnShortBreak" type="Button" parent="CanvasLayer"]
+offset_left = 477.0
+offset_top = 201.0
+offset_right = 667.0
+offset_bottom = 267.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_imqnv")
+text = "Short Break"
+metadata/_edit_use_anchors_ = true
+
+[node name="LblTimeLeft" type="Label" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = 93.0
+offset_right = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 140
+text = "06:35"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LblPomos" type="Label" parent="CanvasLayer"]
+offset_left = 383.0
+offset_top = 512.0
+offset_right = 543.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 30
+text = "Pomos: 1/4"
+metadata/_edit_use_anchors_ = true
+
+[node name="LblEndTime" type="Label" parent="CanvasLayer"]
+offset_left = 599.0
+offset_top = 509.0
+offset_right = 825.0
+offset_bottom = 551.0
+theme_override_font_sizes/font_size = 30
+text = "End Time: 12:45"
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnSkipToEnd" type="Button" parent="CanvasLayer"]
+offset_left = 767.0
+offset_top = 397.0
+offset_right = 847.0
+offset_bottom = 477.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xbeme")
+
+[node name="BtnOpenCalendar" type="Button" parent="CanvasLayer"]
+offset_left = 912.0
+offset_top = 13.0
+offset_right = 979.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 30
+text = "📅"
+
+[node name="BtnOpenStats" type="Button" parent="CanvasLayer"]
+offset_left = 988.0
+offset_top = 15.0
+offset_right = 1055.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 30
+text = "✅"
+
+[node name="BtnOpenSettings" type="Button" parent="CanvasLayer"]
+offset_left = 1062.0
+offset_top = 14.0
+offset_right = 1129.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 30
+text = "⚙️"
+
+[node name="BtnOpenClass" type="Button" parent="CanvasLayer"]
+offset_left = 468.0
+offset_top = 84.0
+offset_right = 729.0
+offset_bottom = 130.0
+text = "Select Class"
+
+[node name="ProgressTimeLeft" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 249.0
+offset_top = 150.0
+offset_right = 912.0
+offset_bottom = 170.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qkn44")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uhdar")
+max_value = 1.0
+value = 0.63
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/BtnPomodoro" to="." method="_on_btn_pomodoro_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnLongBreak" to="." method="_on_btn_long_break_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnShortBreak" to="." method="_on_btn_short_break_pressed"]

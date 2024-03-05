@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu6a0sx1w113q"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_xmyme"]
+[ext_resource type="PackedScene" uid="uid://c1pogrcvbsvyp" path="res://pomodoro_group.tscn" id="2_7vu5n"]
+[ext_resource type="Script" path="res://Overlay.gd" id="3_g44ep"]
+[ext_resource type="PackedScene" uid="uid://d2bwprj3xtebl" path="res://stats_group.tscn" id="3_uc5yp"]
+[ext_resource type="PackedScene" uid="uid://b08qbb3wm80r" path="res://scedule_group.tscn" id="4_2q555"]
+[ext_resource type="PackedScene" uid="uid://dgepfsqd5hwlh" path="res://settings_group.tscn" id="5_jpnrx"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmyme")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.04
+
+[node name="OptionsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+text = "Schedule"
+
+[node name="Button3" type="Button" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+text = "Day Total"
+
+[node name="Button2" type="Button" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 10.0
+theme_override_font_sizes/font_size = 70
+text = "PomoStudy"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="PomodoroGroup" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_7vu5n")]
+layout_mode = 2
+size_flags_stretch_ratio = 2.5
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("3_g44ep")
+
+[node name="StatsGroup" parent="Overlay" instance=ExtResource("3_uc5yp")]
+layout_mode = 1
+
+[node name="SceduleGroup" parent="Overlay" instance=ExtResource("4_2q555")]
+layout_mode = 1
+
+[node name="SettingsGroup" parent="Overlay" instance=ExtResource("5_jpnrx")]
+layout_mode = 1
+
+[node name="OverlayBackButton" type="Button" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "Back"
+
+[connection signal="pressed" from="Overlay/OverlayBackButton" to="Overlay" method="_on_overlay_back_button_pressed"]

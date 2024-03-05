@@ -1,0 +1,128 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1pogrcvbsvyp"]
+
+[ext_resource type="Script" path="res://AutoScaleText.gd" id="1_o8j48"]
+
+[sub_resource type="Theme" id="Theme_xoouu"]
+
+[node name="PomodoroGroup" type="Control"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8j48")
+
+[node name="SelectClass" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+text = "Select Class"
+
+[node name="ProgressTimeLeft" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="TypeButtons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+alignment = 1
+
+[node name="PomodoroButton" type="Button" parent="VBoxContainer/TypeButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_xoouu")
+text = "Pomodoro"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/TypeButtons"]
+layout_mode = 2
+
+[node name="ShortBreakButton" type="Button" parent="VBoxContainer/TypeButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_xoouu")
+text = "Short Break"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/TypeButtons"]
+layout_mode = 2
+
+[node name="LongBreakButton" type="Button" parent="VBoxContainer/TypeButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_xoouu")
+text = "Long Break"
+
+[node name="TimeLeft" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 11.0
+bbcode_enabled = true
+text = "06:35"
+scroll_active = false
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+text = "Start"
+
+[node name="EndCondtions" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+alignment = 1
+
+[node name="PomosLeft" type="Label" parent="VBoxContainer/EndCondtions"]
+layout_mode = 2
+text = "Pomos: 1/4"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/EndCondtions"]
+layout_mode = 2
+
+[node name="EndTime" type="Label" parent="VBoxContainer/EndCondtions"]
+layout_mode = 2
+text = "End Time: 12:45"
+
+[node name="ItemList" type="ItemList" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 6
+item_0/text = "Probability and Statistics"
+item_1/text = "General Chemistry"
+item_2/text = "Computer Science"
+item_3/text = "Introduction to Engineering 2"
+item_4/text = "Introduction to Co-op"
+item_5/text = "General Chemistry Lab"
+
+[node name="Button" type="Button" parent="ItemList"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
