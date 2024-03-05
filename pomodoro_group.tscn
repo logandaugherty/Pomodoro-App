@@ -133,6 +133,9 @@ grow_vertical = 0
 text = "Back"
 
 [connection signal="pressed" from="TimeManagement/SelectClass" to="." method="_on_select_class_pressed"]
+[connection signal="pressed" from="TimeManagement/TypeButtons/PomodoroButton" to="TimeManagement" method="_on_pomodoro_button_pressed"]
+[connection signal="pressed" from="TimeManagement/TypeButtons/ShortBreakButton" to="TimeManagement" method="_on_short_break_button_pressed"]
+[connection signal="pressed" from="TimeManagement/TypeButtons/LongBreakButton" to="TimeManagement" method="_on_long_break_button_pressed"]
 [connection signal="pressed" from="TimeManagement/StartButton" to="TimeManagement" method="_on_start_button_pressed"]
 [connection signal="timeout" from="TimeManagement/Timer" to="TimeManagement" method="_on_timer_timeout"]
 [connection signal="item_selected" from="ClassList" to="." method="_on_item_list_item_selected"]

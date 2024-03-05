@@ -7,10 +7,19 @@ var pomos_left = 0
 var pomos_target = 1
 
 func _ready():
-	time_remaining_s = 1500
+	set_time_remaining_min(25)
 	update_timer()
 	update_end_time()
 	update_pomos_left()
+
+func set_time_remaining_min(minutes):
+	time_remaining_s = minutes*60
+
+func set_time_remaining_s(seconds):
+	time_remaining_s = seconds
+
+func get_time_remaining_s():
+	return time_remaining_s
 
 func update_pomos_left():
 	var display = "%d/%d" % [pomos_left, pomos_target]
@@ -63,3 +72,21 @@ func _on_start_button_pressed():
 	else:
 		enable_timer()
 
+
+
+func _on_pomodoro_button_pressed():
+	disable_timer()
+	set_time_remaining_min(25)
+	update_timer()
+
+
+func _on_short_break_button_pressed():
+	disable_timer()
+	set_time_remaining_min(5)
+	update_timer()
+
+
+func _on_long_break_button_pressed():
+	disable_timer()
+	set_time_remaining_min(10)
+	update_timer()
