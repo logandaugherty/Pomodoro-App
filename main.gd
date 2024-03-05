@@ -14,3 +14,22 @@ func _ready():
 	get_tree().get_root().size_changed.connect(update_layout)
 	update_layout()
 
+func overlay_triggered():
+	for child in $Overlay.get_children():
+		child.visible = false
+	$Overlay/OverlayBackButton.visible = true
+	$Overlay.visible = true
+
+func _on_schedule_button_pressed():
+	overlay_triggered()
+	$Overlay/StatsGroup.visible = true
+
+
+func _on_stats_button_pressed():
+	overlay_triggered()
+	$Overlay/ScheduleGroup.visible = true
+
+
+func _on_settings_button_pressed():
+	overlay_triggered()
+	$Overlay/SettingsGroup.visible = true

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c1pogrcvbsvyp" path="res://pomodoro_group.tscn" id="2_7vu5n"]
 [ext_resource type="Script" path="res://Overlay.gd" id="3_g44ep"]
 [ext_resource type="PackedScene" uid="uid://d2bwprj3xtebl" path="res://stats_group.tscn" id="3_uc5yp"]
-[ext_resource type="PackedScene" uid="uid://b08qbb3wm80r" path="res://scedule_group.tscn" id="4_2q555"]
+[ext_resource type="PackedScene" uid="uid://b08qbb3wm80r" path="res://schedule_group.tscn" id="4_2q555"]
 [ext_resource type="PackedScene" uid="uid://dgepfsqd5hwlh" path="res://settings_group.tscn" id="5_jpnrx"]
 
 [node name="Control" type="Control"]
@@ -34,15 +34,15 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/OptionsContainer"]
+[node name="Schedule Button" type="Button" parent="VBoxContainer/OptionsContainer"]
 layout_mode = 2
 text = "Schedule"
 
-[node name="Button3" type="Button" parent="VBoxContainer/OptionsContainer"]
+[node name="Stats Button" type="Button" parent="VBoxContainer/OptionsContainer"]
 layout_mode = 2
 text = "Day Total"
 
-[node name="Button2" type="Button" parent="VBoxContainer/OptionsContainer"]
+[node name="Settings Button" type="Button" parent="VBoxContainer/OptionsContainer"]
 layout_mode = 2
 text = "Settings"
 
@@ -83,6 +83,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Overlay" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,7 +100,7 @@ script = ExtResource("3_g44ep")
 [node name="StatsGroup" parent="Overlay" instance=ExtResource("3_uc5yp")]
 layout_mode = 1
 
-[node name="SceduleGroup" parent="Overlay" instance=ExtResource("4_2q555")]
+[node name="ScheduleGroup" parent="Overlay" instance=ExtResource("4_2q555")]
 layout_mode = 1
 
 [node name="SettingsGroup" parent="Overlay" instance=ExtResource("5_jpnrx")]
@@ -115,4 +116,7 @@ offset_bottom = 8.0
 grow_horizontal = 0
 text = "Back"
 
+[connection signal="pressed" from="VBoxContainer/OptionsContainer/Schedule Button" to="." method="_on_schedule_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsContainer/Stats Button" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsContainer/Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Overlay/OverlayBackButton" to="Overlay" method="_on_overlay_back_button_pressed"]
