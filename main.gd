@@ -1,35 +1,28 @@
 extends Control
 
+# Update Components visible based on window size
 func update_layout():
+	# Store the screen size
 	var screen_size = get_tree().get_root().size
+	
+	# If the Y component of the screen is less than 500 pixels
 	if screen_size.y < 500:
+		# Hide the title and top ribbon buttons
 		$VBoxContainer/Title.visible = false
 		$VBoxContainer/OptionsContainer.visible = false
+	
+	# Otherwise, bring the title and top ribbon back into sight
 	else:
 		$VBoxContainer/Title.visible = true
 		$VBoxContainer/OptionsContainer.visible = true
 
+# Immediately before the first screen display
 func _ready():
+	# Set the minium dimensions of the screen in terms of pixels
 	DisplayServer.window_set_min_size(Vector2(325,250))
+	
+	# Every time the size of screen changes, update the layout
 	get_tree().get_root().size_changed.connect(update_layout)
+	
+	# Update the layout
 	update_layout()
-
-func overlay_triggered():
-	for child in $Overlay.get_children():
-		child.visible = false
-	$Overlay/OverlayBackButton.visible = true
-	$Overlay.visible = true
-
-func _on_schedule_button_pressed():
-	overlay_triggered()
-	$Overlay/StatsGroup.visible = true
-
-
-func _on_stats_button_pressed():
-	overlay_triggered()
-	$Overlay/ScheduleGroup.visible = true
-
-
-func _on_settings_button_pressed():
-	overlay_triggered()
-	$Overlay/SettingsGroup.visible = true
