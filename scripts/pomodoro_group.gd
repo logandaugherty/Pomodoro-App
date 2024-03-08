@@ -3,8 +3,16 @@ extends Control
 var SCALE_SIZE_TIME = 0.8
 var SCALE_SIZE_GOAL = 0.7
 
+func update_label(reference,rich_text_label):
+	const SCALE = 1.6
+	var text_size_x = (reference.size.x+0.0606)/4.6993
+	var text_size_y = (reference.size.y-0.9242)/1.3664
+	var text_size = min(text_size_x,text_size_y) * SCALE
+	rich_text_label["theme_override_font_sizes/normal_font_size"] = text_size
+
 func update_text():
-	$TimeManagement/TimeLeft["theme_override_font_sizes/normal_font_size"] = $TimeManagement/TimeLeft.size.y * SCALE_SIZE_TIME
+	update_label($TimeManagement/TimeLeftContainer,$TimeManagement/TimeLeftContainer/TimeLeft)
+	#$TimeManagement/TimeLeft["theme_override_font_sizes/normal_font_size"] = $TimeManagement/TimeLeft.size.y * SCALE_SIZE_TIME
 	$TimeManagement/EndCondtions/PomosLeft["theme_override_font_sizes/font_size"] = $TimeManagement/EndCondtions/PomosLeft.size.y * SCALE_SIZE_GOAL
 	$TimeManagement/EndCondtions/EndTime["theme_override_font_sizes/font_size"] = $TimeManagement/EndCondtions/EndTime.size.y * SCALE_SIZE_GOAL
 

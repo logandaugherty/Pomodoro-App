@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1pogrcvbsvyp"]
+[gd_scene load_steps=5 format=3 uid="uid://c1pogrcvbsvyp"]
 
-[ext_resource type="Script" path="res://pomodoro_group.gd" id="1_43s0w"]
-[ext_resource type="Script" path="res://Time Management.gd" id="2_k85yd"]
+[ext_resource type="Script" path="res://scripts/pomodoro_group.gd" id="1_43s0w"]
+[ext_resource type="Script" path="res://scripts/Time Management.gd" id="2_k85yd"]
+[ext_resource type="AudioStream" uid="uid://doiq85s54yobk" path="res://ding-36029.mp3" id="3_do1so"]
 
 [sub_resource type="Theme" id="Theme_xoouu"]
 
@@ -68,14 +69,48 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_xoouu")
 text = "Long Break"
 
-[node name="TimeLeft" type="RichTextLabel" parent="TimeManagement"]
+[node name="TimeLeftContainer" type="Control" parent="TimeManagement"]
+clip_contents = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 11.0
+
+[node name="Skip" type="Button" parent="TimeManagement/TimeLeftContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+
+[node name="TimeLeft" type="RichTextLabel" parent="TimeManagement/TimeLeftContainer"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -34.5
+offset_right = 65.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 11.0
+theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "06:35"
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
 [node name="StartButton" type="Button" parent="TimeManagement"]
 layout_mode = 2
@@ -101,6 +136,10 @@ layout_mode = 2
 text = "End Time: 12:45"
 
 [node name="Timer" type="Timer" parent="TimeManagement"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TimeManagement"]
+position = Vector2(1111, 414)
+stream = ExtResource("3_do1so")
 
 [node name="ClassList" type="ItemList" parent="."]
 visible = false
@@ -136,6 +175,7 @@ text = "Back"
 [connection signal="pressed" from="TimeManagement/TypeButtons/PomodoroButton" to="TimeManagement" method="_on_pomodoro_button_pressed"]
 [connection signal="pressed" from="TimeManagement/TypeButtons/ShortBreakButton" to="TimeManagement" method="_on_short_break_button_pressed"]
 [connection signal="pressed" from="TimeManagement/TypeButtons/LongBreakButton" to="TimeManagement" method="_on_long_break_button_pressed"]
+[connection signal="pressed" from="TimeManagement/TimeLeftContainer/Skip" to="TimeManagement" method="_on_skip_pressed"]
 [connection signal="pressed" from="TimeManagement/StartButton" to="TimeManagement" method="_on_start_button_pressed"]
 [connection signal="timeout" from="TimeManagement/Timer" to="TimeManagement" method="_on_timer_timeout"]
 [connection signal="item_selected" from="ClassList" to="." method="_on_item_list_item_selected"]

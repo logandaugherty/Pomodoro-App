@@ -5,12 +5,20 @@ func update_layout():
 	# Store the screen size
 	var screen_size = get_tree().get_root().size
 	
-	# If the Y component of the screen is less than 500 pixels
-	if screen_size.y < 500:
+	if screen_size.x < 600:
+		$VBoxContainer/Title["theme_override_font_sizes/font_size"] = 55
+		
+	else:
+		$VBoxContainer/Title["theme_override_font_sizes/font_size"] = 100
+	
+	if screen_size.y < 300:
 		# Hide the title and top ribbon buttons
-		$VBoxContainer/Title.visible = false
 		$VBoxContainer/OptionsContainer.visible = false
 	
+	# If the Y component of the screen is less than 500 pixels
+	if screen_size.y < 400:
+		# Hide the title and top ribbon buttons
+		$VBoxContainer/Title.visible = false
 	# Otherwise, bring the title and top ribbon back into sight
 	else:
 		$VBoxContainer/Title.visible = true

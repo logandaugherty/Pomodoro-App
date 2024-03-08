@@ -12,12 +12,13 @@ config_version=5
 
 config/name="Pomostudy"
 config/tags=PackedStringArray("github_repo", "study_tool")
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/schedule_slider.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/always_on_top=true
 window/stretch/aspect="expand"
 
 [rendering]
